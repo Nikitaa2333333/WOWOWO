@@ -90,7 +90,15 @@ const Home: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen bg-[#f1f5f9]">
       {/* Hero Section */}
-      <section className="relative pt-12 pb-12 md:pt-32 md:pb-24 px-4 overflow-hidden">
+      <section className="relative pt-12 pb-12 md:pt-32 md:pb-24 px-4 isolate">
+        {/* Background Blobs Container (Clipped) */}
+        <div className="absolute inset-0 overflow-hidden -z-10">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none opacity-20">
+            <div className="absolute top-20 left-10 w-64 h-64 bg-blue-400/30 blur-[120px] rounded-full" />
+            <div className="absolute bottom-20 right-10 w-64 h-64 bg-indigo-400/30 blur-[120px] rounded-full" />
+          </div>
+        </div>
+
         <div className="max-w-4xl mx-auto text-center relative z-20">
           <h1 className="text-3xl sm:text-5xl md:text-7xl font-extrabold text-gray-900 tracking-tight leading-tight mb-6 animate-in fade-in slide-in-from-bottom-4 duration-1000">
             Современное <br className="hidden sm:block" /><span className="text-blue-600">лабораторное</span> оборудование
@@ -100,16 +108,16 @@ const Home: React.FC = () => {
           </p>
 
           {/* Premium Search */}
-          <div className="max-w-2xl mx-auto relative group z-50">
+          <div className="max-w-2xl mx-auto relative group z-50 text-left">
             <div className="relative flex items-center">
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Поиск по каталогу..."
-                className="w-full pl-6 pr-14 py-4 md:py-6 rounded-full bg-white border border-gray-200 text-base md:text-xl font-medium shadow-xl focus:outline-none focus:ring-4 focus:ring-blue-100 transition-all"
+                className="w-full pl-6 pr-14 py-4 md:py-6 rounded-full bg-white border border-gray-200 text-base md:text-xl font-medium shadow-xl focus:outline-none focus:ring-4 focus:ring-blue-100 transition-all relative z-20"
               />
-              <div className="absolute right-3 p-3 bg-gray-900 text-white rounded-full shadow-lg">
+              <div className="absolute right-3 p-3 bg-gray-900 text-white rounded-full shadow-lg z-20">
                 <Search className="w-5 h-5" />
               </div>
             </div>
@@ -142,12 +150,6 @@ const Home: React.FC = () => {
               </div>
             )}
           </div>
-        </div>
-
-        {/* Decorative Background Elements */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none z-0 opacity-20">
-          <div className="absolute top-20 left-10 w-64 h-64 bg-blue-400/30 blur-[120px] rounded-full" />
-          <div className="absolute bottom-20 right-10 w-64 h-64 bg-indigo-400/30 blur-[120px] rounded-full" />
         </div>
       </section>
 
