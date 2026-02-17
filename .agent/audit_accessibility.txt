@@ -1,0 +1,169 @@
+## UI Pro Max Search Results
+**Domain:** ux | **Query:** accessibility focus keyboard aria touch
+**Source:** ux-guidelines.csv | **Found:** 15 results
+
+### Result 1
+- **Category:** Interaction
+- **Issue:** Focus States
+- **Platform:** All
+- **Description:** Keyboard users need visible focus indicators
+- **Do:** Use visible focus rings on interactive elements
+- **Don't:** Remove focus outline without replacement
+- **Code Example Good:** focus:ring-2 focus:ring-blue-500
+- **Code Example Bad:** outline-none without alternative
+- **Severity:** High
+
+### Result 2
+- **Category:** Accessibility
+- **Issue:** Keyboard Navigation
+- **Platform:** Web
+- **Description:** All functionality accessible via keyboard
+- **Do:** Tab order matches visual order
+- **Don't:** Keyboard traps or illogical tab order
+- **Code Example Good:** tabIndex for custom order
+- **Code Example Bad:** Unreachable elements
+- **Severity:** High
+
+### Result 3
+- **Category:** Accessibility
+- **Issue:** ARIA Labels
+- **Platform:** All
+- **Description:** Interactive elements need accessible names
+- **Do:** Add aria-label for icon-only buttons
+- **Don't:** Icon buttons without labels
+- **Code Example Good:** aria-label='Close menu'
+- **Code Example Bad:** <button><Icon/></button>
+- **Severity:** High
+
+### Result 4
+- **Category:** Accessibility
+- **Issue:** Skip Links
+- **Platform:** Web
+- **Description:** Allow keyboard users to skip navigation
+- **Do:** Provide skip to main content link
+- **Don't:** No skip link on nav-heavy pages
+- **Code Example Good:** Skip to main content link
+- **Code Example Bad:** 100 tabs to reach content
+- **Severity:** Medium
+
+### Result 5
+- **Category:** Touch
+- **Issue:** Touch Spacing
+- **Platform:** Mobile
+- **Description:** Adjacent touch targets need adequate spacing
+- **Do:** Minimum 8px gap between touch targets
+- **Don't:** Tightly packed clickable elements
+- **Code Example Good:** gap-2 between buttons
+- **Code Example Bad:** gap-0 or gap-1
+- **Severity:** Medium
+
+### Result 6
+- **Category:** Responsive
+- **Issue:** Touch Friendly
+- **Platform:** Web
+- **Description:** Mobile layouts need touch-sized targets
+- **Do:** Increase touch targets on mobile
+- **Don't:** Same tiny buttons on mobile
+- **Code Example Good:** Larger buttons on mobile
+- **Code Example Bad:** Desktop-sized targets on mobile
+- **Severity:** High
+
+### Result 7
+- **Category:** Touch
+- **Issue:** Touch Target Size
+- **Platform:** Mobile
+- **Description:** Small buttons are hard to tap accurately
+- **Do:** Minimum 44x44px touch targets
+- **Don't:** Tiny clickable areas
+- **Code Example Good:** min-h-[44px] min-w-[44px]
+- **Code Example Bad:** w-6 h-6 buttons
+- **Severity:** High
+
+### Result 8
+- **Category:** Forms
+- **Issue:** Mobile Keyboards
+- **Platform:** Mobile
+- **Description:** Show appropriate keyboard for input type
+- **Do:** Use inputmode attribute
+- **Don't:** Default keyboard for all inputs
+- **Code Example Good:** inputmode='numeric'
+- **Code Example Bad:** Text keyboard for numbers
+- **Severity:** Medium
+
+### Result 9
+- **Category:** Touch
+- **Issue:** Pull to Refresh
+- **Platform:** Mobile
+- **Description:** Accidental refresh is frustrating
+- **Do:** Disable where not needed
+- **Don't:** Enable by default everywhere
+- **Code Example Good:** overscroll-behavior: contain
+- **Code Example Bad:** Default overscroll
+- **Severity:** Low
+
+### Result 10
+- **Category:** Touch
+- **Issue:** Tap Delay
+- **Platform:** Mobile
+- **Description:** 300ms tap delay feels laggy
+- **Do:** Use touch-action CSS or fastclick
+- **Don't:** Default mobile tap handling
+- **Code Example Good:** touch-action: manipulation
+- **Code Example Bad:** No touch optimization
+- **Severity:** Medium
+
+### Result 11
+- **Category:** Touch
+- **Issue:** Haptic Feedback
+- **Platform:** Mobile
+- **Description:** Tactile feedback improves interaction feel
+- **Do:** Use for confirmations and important actions
+- **Don't:** Overuse vibration feedback
+- **Code Example Good:** navigator.vibrate(10)
+- **Code Example Bad:** Vibrate on every tap
+- **Severity:** Low
+
+### Result 12
+- **Category:** Animation
+- **Issue:** Hover vs Tap
+- **Platform:** All
+- **Description:** Hover effects don't work on touch devices
+- **Do:** Use click/tap for primary interactions
+- **Don't:** Rely only on hover for important actions
+- **Code Example Good:** onClick handler
+- **Code Example Bad:** onMouseEnter only
+- **Severity:** High
+
+### Result 13
+- **Category:** Touch
+- **Issue:** Gesture Conflicts
+- **Platform:** Mobile
+- **Description:** Custom gestures can conflict with system
+- **Do:** Avoid horizontal swipe on main content
+- **Don't:** Override system gestures
+- **Code Example Good:** Vertical scroll primary
+- **Code Example Bad:** Horizontal swipe carousel only
+- **Severity:** Medium
+
+### Result 14
+- **Category:** Accessibility
+- **Issue:** Alt Text
+- **Platform:** All
+- **Description:** Images need text alternatives
+- **Do:** Descriptive alt text for meaningful images
+- **Don't:** Empty or missing alt attributes
+- **Code Example Good:** alt='Dog playing in park'
+- **Code Example Bad:** alt='' for content images
+- **Severity:** High
+
+### Result 15
+- **Category:** Accessibility
+- **Issue:** Error Messages
+- **Platform:** All
+- **Description:** Error messages must be announced
+- **Do:** Use aria-live or role=alert for errors
+- **Don't:** Visual-only error indication
+- **Code Example Good:** role='alert'
+- **Code Example Bad:** Red border only
+- **Severity:** High
+

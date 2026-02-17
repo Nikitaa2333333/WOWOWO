@@ -1,0 +1,169 @@
+## UI Pro Max Search Results
+**Domain:** ux | **Query:** animation performance reduced-motion
+**Source:** ux-guidelines.csv | **Found:** 15 results
+
+### Result 1
+- **Category:** Animation
+- **Issue:** Reduced Motion
+- **Platform:** All
+- **Description:** Respect user's motion preferences
+- **Do:** Check prefers-reduced-motion media query
+- **Don't:** Ignore accessibility motion settings
+- **Code Example Good:** @media (prefers-reduced-motion: reduce)
+- **Code Example Bad:** No motion query check
+- **Severity:** High
+
+### Result 2
+- **Category:** Animation
+- **Issue:** Excessive Motion
+- **Platform:** All
+- **Description:** Too many animations cause distraction and motion sickness
+- **Do:** Animate 1-2 key elements per view maximum
+- **Don't:** Animate everything that moves
+- **Code Example Good:** Single hero animation
+- **Code Example Bad:** animate-bounce on 5+ elements
+- **Severity:** High
+
+### Result 3
+- **Category:** Animation
+- **Issue:** Easing Functions
+- **Platform:** All
+- **Description:** Linear motion feels robotic
+- **Do:** Use ease-out for entering ease-in for exiting
+- **Don't:** Use linear for UI transitions
+- **Code Example Good:** ease-out
+- **Code Example Bad:** linear
+- **Severity:** Low
+
+### Result 4
+- **Category:** Animation
+- **Issue:** Transform Performance
+- **Platform:** Web
+- **Description:** Some CSS properties trigger expensive repaints
+- **Do:** Use transform and opacity for animations
+- **Don't:** Animate width/height/top/left properties
+- **Code Example Good:** transform: translateY()
+- **Code Example Bad:** top: 10px animation
+- **Severity:** Medium
+
+### Result 5
+- **Category:** Animation
+- **Issue:** Continuous Animation
+- **Platform:** All
+- **Description:** Infinite animations are distracting
+- **Do:** Use for loading indicators only
+- **Don't:** Use for decorative elements
+- **Code Example Good:** animate-spin on loader
+- **Code Example Bad:** animate-bounce on icons
+- **Severity:** Medium
+
+### Result 6
+- **Category:** Accessibility
+- **Issue:** Motion Sensitivity
+- **Platform:** All
+- **Description:** Parallax/Scroll-jacking causes nausea
+- **Do:** Respect prefers-reduced-motion
+- **Don't:** Force scroll effects
+- **Code Example Good:** @media (prefers-reduced-motion)
+- **Code Example Bad:** ScrollTrigger.create()
+- **Severity:** High
+
+### Result 7
+- **Category:** Performance
+- **Issue:** Lazy Loading
+- **Platform:** All
+- **Description:** Load content as needed
+- **Do:** Lazy load below-fold images and content
+- **Don't:** Load everything upfront
+- **Code Example Good:** loading='lazy'
+- **Code Example Bad:** All images eager load
+- **Severity:** Medium
+
+### Result 8
+- **Category:** Performance
+- **Issue:** Caching
+- **Platform:** Web
+- **Description:** Repeat visits should be fast
+- **Do:** Set appropriate cache headers
+- **Don't:** No caching strategy
+- **Code Example Good:** Cache-Control headers
+- **Code Example Bad:** Every request hits server
+- **Severity:** Medium
+
+### Result 9
+- **Category:** Performance
+- **Issue:** Bundle Size
+- **Platform:** Web
+- **Description:** Large JavaScript slows interaction
+- **Do:** Monitor and minimize bundle size
+- **Don't:** Ignore bundle size growth
+- **Code Example Good:** Bundle analyzer
+- **Code Example Bad:** No size monitoring
+- **Severity:** Medium
+
+### Result 10
+- **Category:** Animation
+- **Issue:** Loading States
+- **Platform:** All
+- **Description:** Show feedback during async operations
+- **Do:** Use skeleton screens or spinners
+- **Don't:** Leave UI frozen with no feedback
+- **Code Example Good:** animate-pulse skeleton
+- **Code Example Bad:** Blank screen while loading
+- **Severity:** High
+
+### Result 11
+- **Category:** Performance
+- **Issue:** Image Optimization
+- **Platform:** All
+- **Description:** Large images slow page load
+- **Do:** Use appropriate size and format (WebP)
+- **Don't:** Unoptimized full-size images
+- **Code Example Good:** srcset with multiple sizes
+- **Code Example Bad:** 4000px image for 400px display
+- **Severity:** High
+
+### Result 12
+- **Category:** Performance
+- **Issue:** Code Splitting
+- **Platform:** Web
+- **Description:** Large bundles slow initial load
+- **Do:** Split code by route/feature
+- **Don't:** Single large bundle
+- **Code Example Good:** dynamic import()
+- **Code Example Bad:** All code in main bundle
+- **Severity:** Medium
+
+### Result 13
+- **Category:** Performance
+- **Issue:** Font Loading
+- **Platform:** Web
+- **Description:** Web fonts can block rendering
+- **Do:** Use font-display swap or optional
+- **Don't:** Invisible text during font load
+- **Code Example Good:** font-display: swap
+- **Code Example Bad:** FOIT (Flash of Invisible Text)
+- **Severity:** Medium
+
+### Result 14
+- **Category:** Performance
+- **Issue:** Render Blocking
+- **Platform:** Web
+- **Description:** CSS/JS can block first paint
+- **Do:** Inline critical CSS defer non-critical
+- **Don't:** Large blocking CSS files
+- **Code Example Good:** Critical CSS inline
+- **Code Example Bad:** All CSS in head
+- **Severity:** Medium
+
+### Result 15
+- **Category:** Animation
+- **Issue:** Duration Timing
+- **Platform:** All
+- **Description:** Animations should feel responsive not sluggish
+- **Do:** Use 150-300ms for micro-interactions
+- **Don't:** Use animations longer than 500ms for UI
+- **Code Example Good:** transition-all duration-200
+- **Code Example Bad:** duration-1000
+- **Severity:** Medium
+

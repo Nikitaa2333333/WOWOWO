@@ -1,0 +1,84 @@
+import React, { Suspense, lazy } from 'react';
+import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { ModalProvider } from './context/ModalContext';
+import { ProductProvider } from './context/ProductContext';
+import FeedbackModal from './components/FeedbackModal';
+import { GlobalSearch } from './components/GlobalSearch';
+import { ROUTES } from './lib/routes';
+
+// Code Splitting: страницы грузятся только когда пользователь на них переходит
+const Home = lazy(() => import('./pages/Home.tsx'));
+const CategoryPage = lazy(() => import('./pages/CategoryPage.tsx'));
+const SubcategoryPage = lazy(() => import('./pages/SubcategoryPage.tsx'));
+const ProductPage = lazy(() => import('./pages/ProductPage.tsx'));
+import { useModal } from './context/ModalContext';
+
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+};
+
+const AppContent: React.FC = () => {
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+  const { openModal, isOpen } = useModal();
+
+  return (
+    <div className={`relative min-h-screen font-sans text-gray-900 overflow-x-hidden ${isHomePage ? 'bg-[#f1f5f9]' : 'bg-[#f1f5f9]'}`}>
+      {/* Mesh Gradient Background Elements */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0 bg-gray-50/50" />
+
+      <ScrollToTop />
+
+      {!isHomePage && <GlobalSearch />}
+
+      <main className="relative z-10">
+        <Suspense fallback={<div className="p-20 text-center text-gray-400 font-bold animate-pulse">Загрузка...</div>}>
+          <Routes>
+            <Route path={ROUTES.HOME} element={<Home />} />
+            <Route path="/catalog/:categoryId" element={<CategoryPage />} />
+            <Route path="/catalog/:categoryId/:subcategoryId" element={<SubcategoryPage />} />
+            <Route path="/catalog/:categoryId/:subcategoryId/:productId" element={<ProductPage />} />
+            <Route path="*" element={<Home />} />
+          </Routes>
+        </Suspense>
+      </main>
+
+      <FeedbackModal />
+
+      {/* Floating Action Button - Global */}
+      {!isOpen && (
+        <button
+          onClick={() => openModal()}
+          aria-label="Связаться с менеджером"
+          className="fixed bottom-6 left-1/2 -translate-x-1/2 md:left-auto md:right-8 md:translate-x-0 bg-gray-900 text-white px-8 py-4 rounded-full shadow-2xl z-50 flex items-center justify-center font-semibold whitespace-nowrap hover:bg-gray-800 active:scale-95 transition-all w-[calc(100%-32px)] md:w-auto"
+        >
+          Связаться с менеджером
+        </button>
+      )}
+
+      <footer className="relative z-10 py-12 text-center text-gray-400 text-sm mt-12 glass-panel border-t border-b-0 border-x-0 rounded-none bg-white/30">
+        <p>&copy; {new Date().getFullYear()} Graphic Lab. Premium Equipment.</p>
+      </footer>
+    </div>
+  );
+};
+
+const App: React.FC = () => {
+  return (
+    <Router>
+      <ModalProvider>
+        <ProductProvider>
+          <AppContent />
+        </ProductProvider>
+      </ModalProvider>
+    </Router>
+  );
+};
+
+export default App;
