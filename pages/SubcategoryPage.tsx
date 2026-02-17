@@ -43,8 +43,8 @@ const SubcategoryPage: React.FC = () => {
 
       <div className="flex flex-col lg:flex-row gap-8 mt-4 md:mt-8 relative items-start">
         {/* CATEGORY SELECTOR */}
-        <aside className="w-full lg:w-64 flex-shrink-0 lg:sticky lg:top-24 z-10 transition-all">
-          <div className="bg-white/50 backdrop-blur-md rounded-2xl border border-blue-50/50 p-2 shadow-sm">
+        <aside className="w-full lg:w-64 flex-shrink-0 lg:sticky lg:top-20 z-10 transition-all">
+          <div className="bg-white/50 backdrop-blur-md rounded-2xl border border-blue-50/50 p-2 shadow-sm lg:max-h-[85vh] lg:overflow-y-auto custom-scrollbar">
 
             {/* Mobile: Horizontal Title */}
             <h3 className="lg:hidden text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2 px-2 pt-1">
@@ -60,14 +60,14 @@ const SubcategoryPage: React.FC = () => {
                     key={cat.id}
                     to={ROUTES.SUBCATEGORY(categoryId!, cat.id)}
                     className={clsx(
-                      "flex-shrink-0 snap-start whitespace-nowrap px-4 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 border w-auto lg:w-full text-left flex items-center justify-between group",
+                      "flex-shrink-0 snap-start whitespace-nowrap px-4 py-2.5 rounded-xl text-xs font-bold transition-colors duration-200 border w-auto lg:w-full text-left flex items-center justify-between group",
                       isActive
-                        ? "bg-gray-900 text-white border-gray-900 shadow-lg shadow-gray-200 transform scale-[1.02]"
+                        ? "bg-gray-900 text-white border-gray-900 shadow-sm"
                         : "bg-white text-gray-500 border-transparent hover:bg-blue-50 hover:text-blue-700"
                     )}
                   >
                     <span>{cat.name}</span>
-                    <ChevronRight className={clsx("hidden lg:block w-3 h-3 transition-transform", isActive ? "text-gray-400" : "opacity-0 group-hover:opacity-100 group-hover:translate-x-1 text-blue-400")} />
+                    <ChevronRight className={clsx("hidden lg:block w-3 h-3 transition-opacity", isActive ? "text-gray-400" : "opacity-0 group-hover:opacity-100 text-blue-400")} />
                   </Link>
                 );
               })}
@@ -101,13 +101,13 @@ const SubcategoryPage: React.FC = () => {
             <div className="flex items-center gap-1 bg-gray-100/80 p-1 rounded-xl relative z-10">
               <button
                 onClick={() => setSortBy('name')}
-                className={clsx("px-4 py-2 rounded-lg text-xs font-bold transition-all", sortBy === 'name' ? "bg-white shadow-sm text-gray-900" : "text-gray-400 hover:text-gray-600")}
+                className={clsx("px-4 py-2 rounded-lg text-xs font-bold transition-colors", sortBy === 'name' ? "bg-white shadow-sm text-gray-900" : "text-gray-400 hover:text-gray-600")}
               >
                 А-Я
               </button>
               <button
                 onClick={() => setSortBy('stock')}
-                className={clsx("px-4 py-2 rounded-lg text-xs font-bold transition-all", sortBy === 'stock' ? "bg-white shadow-sm text-green-700" : "text-gray-400 hover:text-gray-600")}
+                className={clsx("px-4 py-2 rounded-lg text-xs font-bold transition-colors", sortBy === 'stock' ? "bg-white shadow-sm text-green-700" : "text-gray-400 hover:text-gray-600")}
               >
                 Наличие
               </button>
@@ -121,7 +121,7 @@ const SubcategoryPage: React.FC = () => {
                 <Link
                   key={product.id}
                   to={ROUTES.PRODUCT(categoryId!, subcategoryId!, product.id)}
-                  className="bg-white rounded-2xl border border-gray-100 overflow-hidden hover:border-blue-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full group"
+                  className="bg-white rounded-2xl border border-gray-100 overflow-hidden hover:border-blue-400 transition-colors duration-200 flex flex-col h-full group"
                 >
                   <div className="aspect-[1.1] bg-white relative p-6 flex items-center justify-center border-b border-gray-50">
                     <img

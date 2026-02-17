@@ -14,9 +14,6 @@ const Header: React.FC = () => {
                 {/* Logo */}
                 <Link to={ROUTES.HOME} className="flex items-center gap-2 flex-shrink-0">
                     <img src="/logo.svg" alt="Graphic Lab" className="h-8 w-auto" />
-                    <span className="hidden sm:block font-extrabold text-xl tracking-tighter text-gray-900">
-                        Graphic Lab
-                    </span>
                 </Link>
 
                 {/* Search & Actions */}

@@ -90,7 +90,7 @@ const Home: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen bg-[#f1f5f9]">
       {/* Hero Section */}
-      <section className="relative pt-12 pb-12 md:pt-32 md:pb-24 px-4 isolate">
+      <section className="relative pt-12 pb-12 md:pt-32 md:pb-24 px-4 z-40">
         {/* Background Blobs Container (Clipped) */}
         <div className="absolute inset-0 overflow-hidden -z-10">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none opacity-20">
@@ -124,7 +124,7 @@ const Home: React.FC = () => {
 
             {/* Live Results Dropdown */}
             {searchQuery.length >= 2 && (
-              <div className="absolute top-full left-0 right-0 mt-4 bg-white/95 backdrop-blur-xl rounded-2xl border border-gray-100 shadow-2xl z-50 overflow-hidden max-h-[60vh] overflow-y-auto">
+              <div className="absolute top-full left-0 right-0 mt-4 bg-white rounded-2xl border border-gray-100 shadow-2xl z-50 overflow-hidden max-h-[60vh] overflow-y-auto">
                 {searchResults.length > 0 ? (
                   <div className="p-2 space-y-1">
                     {searchResults.map((product) => (
