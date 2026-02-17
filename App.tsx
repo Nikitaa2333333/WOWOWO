@@ -7,10 +7,10 @@ import { GlobalSearch } from './components/GlobalSearch';
 import { ROUTES } from './lib/routes';
 
 // Code Splitting
-const Home = lazy(() => import('./pages/Home'));
-const CategoryPage = lazy(() => import('./pages/CategoryPage'));
-const SubcategoryPage = lazy(() => import('./pages/SubcategoryPage'));
-const ProductPage = lazy(() => import('./pages/ProductPage'));
+const Home = lazy(() => import('./pages/Home.tsx'));
+const CategoryPage = lazy(() => import('./pages/CategoryPage.tsx'));
+const SubcategoryPage = lazy(() => import('./pages/SubcategoryPage.tsx'));
+const ProductPage = lazy(() => import('./pages/ProductPage.tsx'));
 import { useModal } from './context/ModalContext';
 
 const ScrollToTop = () => {
