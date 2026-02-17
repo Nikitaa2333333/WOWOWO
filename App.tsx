@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import { ModalProvider } from './context/ModalContext';
 import { ProductProvider } from './context/ProductContext';
 import FeedbackModal from './components/FeedbackModal';
-import { GlobalSearch } from './components/GlobalSearch';
+import Header from './components/Header';
 import { ROUTES } from './lib/routes';
 
 // Code Splitting
@@ -32,7 +32,7 @@ const AppContent: React.FC = () => {
     <div className="relative min-h-screen font-sans text-gray-900 bg-[#f1f5f9]">
       <ScrollToTop />
 
-      {!isHomePage && <GlobalSearch />}
+      {!isHomePage && <Header />}
 
       <main className="relative z-10">
         <Suspense fallback={

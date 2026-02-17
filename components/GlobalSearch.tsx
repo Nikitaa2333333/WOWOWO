@@ -77,13 +77,13 @@ export const GlobalSearch: React.FC = () => {
         return (
             <button
                 onClick={() => setIsOpen(true)}
-                className="fixed top-4 right-4 z-50 bg-white/80 backdrop-blur-md border border-gray-200 rounded-xl px-4 py-2 flex items-center gap-2 hover:bg-white shadow-lg"
+                className="w-full md:w-auto flex items-center gap-3 px-4 py-2 bg-gray-100/50 hover:bg-gray-100 rounded-full border border-gray-200/50 transition-all group"
                 aria-label="Открыть поиск (Ctrl+K)"
             >
-                <Search className="w-4 h-4 text-gray-600" />
-                <span className="text-sm text-gray-600">Поиск...</span>
-                <kbd className="hidden md:inline-block px-2 py-0.5 text-xs bg-gray-100 border border-gray-300 rounded">
-                    Ctrl K
+                <Search className="w-4 h-4 text-gray-400 group-hover:text-gray-900 transition-colors" />
+                <span className="text-sm font-medium text-gray-500 group-hover:text-gray-900 transition-colors">Поиск оборудования...</span>
+                <kbd className="hidden lg:inline-flex items-center gap-1 px-1.5 py-0.5 text-[10px] font-bold text-gray-400 bg-white border border-gray-200 rounded-md">
+                    CMD K
                 </kbd>
             </button>
         );

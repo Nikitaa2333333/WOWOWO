@@ -41,52 +41,55 @@ const SubcategoryPage: React.FC = () => {
     <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <Breadcrumbs />
 
-      <div className="flex flex-col lg:flex-row gap-8 mt-8">
+      <div className="flex flex-col lg:flex-row gap-8 mt-4 md:mt-8">
+        {/* CATEGORY SELECTOR */}
+        <aside className="w-full lg:w-64 flex-shrink-0">
+          <div className="lg:sticky lg:top-24">
 
-        {/* SIDEBAR (Меню категорий) */}
-        <aside className="w-full lg:w-72 flex-shrink-0">
-          <div className="lg:sticky lg:top-24 space-y-6">
-            <div className="bg-white/50 backdrop-blur-xl rounded-2xl p-2 border border-blue-100 max-h-[calc(100vh-8rem)] overflow-y-auto custom-scrollbar">
-              <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2 px-4 py-2 sticky top-0 bg-white/95 backdrop-blur z-10 border-b border-gray-100">
-                Категории
-              </h3>
-              <nav className="flex flex-col gap-0.5 p-2">
-                {SUBCATEGORIES.map((cat) => {
-                  const isActive = cat.id === subcategoryId;
-                  return (
-                    <Link
-                      key={cat.id}
-                      to={ROUTES.SUBCATEGORY(categoryId!, cat.id)}
-                      className={clsx(
-                        "group flex items-center justify-between px-4 py-3 rounded-xl transition-all duration-300 text-sm font-bold",
-                        isActive
-                          ? "bg-gray-900 text-white shadow-lg scale-[1.02]"
-                          : "text-gray-600 hover:bg-white/60 hover:text-blue-600"
-                      )}
-                    >
-                      <span className="truncate mr-2">{cat.name}</span>
-                      {isActive && <ChevronRight className="w-4 h-4 opacity-50" />}
-                    </Link>
-                  );
-                })}
-              </nav>
+            {/* Mobile: Horizontal Title */}
+            <h3 className="lg:hidden text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3 px-1">
+              Категории
+            </h3>
+
+            {/* Container for scrollable list */}
+            <div className="flex lg:flex-col gap-2 overflow-x-auto pb-4 lg:pb-0 no-scrollbar -mx-4 px-4 lg:mx-0 lg:px-0">
+              {SUBCATEGORIES.map((cat) => {
+                const isActive = cat.id === subcategoryId;
+                return (
+                  <Link
+                    key={cat.id}
+                    to={ROUTES.SUBCATEGORY(categoryId!, cat.id)}
+                    className={clsx(
+                      "flex-shrink-0 whitespace-nowrap px-4 py-2.5 rounded-full text-xs font-bold transition-all duration-200 border",
+                      isActive
+                        ? "bg-gray-900 text-white border-gray-900 shadow-md transform scale-105"
+                        : "bg-white text-gray-600 border-gray-200 hover:border-gray-300 hover:text-gray-900"
+                    )}
+                  >
+                    {cat.name}
+                  </Link>
+                );
+              })}
             </div>
 
-
+            {/* Desktop Title (restored position) */}
+            <h3 className="hidden lg:block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-4 px-2 mt-4">
+              Все категории
+            </h3>
           </div>
         </aside>
 
         {/* MAIN CONTENT (Сетка товаров) */}
         <main className="flex-1 min-w-0">
           {/* Header категории */}
-          <div className="glass-panel rounded-[2rem] p-8 mb-6 bg-white/40 border border-white/60 flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div className="md:glass-panel md:rounded-[2rem] p-4 md:p-8 mb-6 bg-white/40 border-b md:border border-white/60 flex flex-col md:flex-row md:items-end justify-between gap-4 md:gap-6">
             <div>
-              <h1 className="text-3xl md:text-4xl font-black text-gray-900 tracking-tight mb-2 leading-tight">
+              <h1 className="text-2xl md:text-4xl font-black text-gray-900 tracking-tight mb-1 md:mb-2 leading-tight">
                 {currentSubcategory.name}
               </h1>
-              <p className="text-gray-500 font-medium text-xs flex items-center gap-2">
+              <p className="text-gray-500 font-semibold text-[10px] md:text-xs flex items-center gap-2">
                 <LayoutGrid className="w-3 h-3" />
-                {allProducts.length} моделей в наличии
+                {allProducts.length} моделей
               </p>
             </div>
 
