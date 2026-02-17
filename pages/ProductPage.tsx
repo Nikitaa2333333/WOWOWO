@@ -57,13 +57,21 @@ const ProductPage: React.FC = () => {
 
         {/* Right Column: Info */}
         <div className="flex flex-col">
-          {product.inStock && (
-            <div className="inline-flex items-center space-x-2 text-green-700 bg-green-50 px-3 py-1 rounded text-xs font-bold border border-green-100">
-              <span>В наличии</span>
-            </div>
-          )}
+          <div className="flex items-center gap-4 mb-4">
+            {product.inStock ? (
+              <span className="inline-flex items-center text-xs font-bold text-green-700 bg-green-50 px-3 py-1.5 rounded-full border border-green-100">
+                <span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
+                В наличии
+              </span>
+            ) : (
+              <span className="inline-flex items-center text-xs font-bold text-gray-500 bg-gray-100 px-3 py-1.5 rounded-full border border-gray-200">
+                <span className="w-2 h-2 bg-gray-400 rounded-full mr-2"></span>
+                Под заказ
+              </span>
+            )}
+          </div>
 
-          <h1 className="text-3xl md:text-5xl font-extrabold text-gray-900 tracking-tight mb-6 leading-tight">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight mb-6 leading-tight">
             {product.name}
           </h1>
 

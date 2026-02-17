@@ -90,54 +90,54 @@ const Home: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen bg-[#f1f5f9]">
       {/* Hero Section */}
-      <section className="relative pt-20 pb-16 md:pt-32 md:pb-24 px-4 overflow-hidden">
-        <div className="max-w-4xl mx-auto text-center relative z-10">
-          <h1 className="text-5xl md:text-8xl font-black text-gray-900 tracking-tighter leading-[0.85] mb-8 animate-in fade-in slide-in-from-bottom-4 duration-1000">
-            ADVANCED<br /><span className="text-blue-600">RESEARCH</span><br />EQUIPMENT.
+      <section className="relative pt-12 pb-12 md:pt-32 md:pb-24 px-4 overflow-hidden">
+        <div className="max-w-4xl mx-auto text-center relative z-20">
+          <h1 className="text-3xl sm:text-5xl md:text-7xl font-extrabold text-gray-900 tracking-tight leading-tight mb-6 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+            Современное <br className="hidden sm:block" /><span className="text-blue-600">лабораторное</span> оборудование
           </h1>
-          <p className="max-w-xl mx-auto text-sm md:text-xl text-gray-500 font-medium leading-relaxed mb-12 opacity-80">
-            Professional solutions for laboratory excellence. Precision, reliability, and state-of-the-art technology.
+          <p className="max-w-xl mx-auto text-base md:text-xl text-gray-500 font-medium leading-relaxed mb-10 opacity-80">
+            Профессиональные решения для лабораторий. Точность, надежность и передовые технологии.
           </p>
 
           {/* Premium Search */}
-          <div className="max-w-2xl mx-auto relative group">
+          <div className="max-w-2xl mx-auto relative group z-50">
             <div className="relative flex items-center">
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search catalog..."
-                className="w-full pl-8 pr-16 py-5 md:py-7 rounded-[2rem] bg-white border border-gray-200 text-lg md:text-2xl font-bold shadow-2xl focus:outline-none focus:ring-4 focus:ring-blue-100 transition-all"
+                placeholder="Поиск по каталогу..."
+                className="w-full pl-6 pr-14 py-4 md:py-6 rounded-full bg-white border border-gray-200 text-base md:text-xl font-medium shadow-xl focus:outline-none focus:ring-4 focus:ring-blue-100 transition-all"
               />
-              <div className="absolute right-4 p-4 bg-gray-900 text-white rounded-2xl shadow-xl">
-                <Search className="w-6 h-6" />
+              <div className="absolute right-3 p-3 bg-gray-900 text-white rounded-full shadow-lg">
+                <Search className="w-5 h-5" />
               </div>
             </div>
 
             {/* Live Results Dropdown */}
             {searchQuery.length >= 2 && (
-              <div className="absolute top-full left-0 right-0 mt-4 bg-white/90 backdrop-blur-2xl rounded-3xl border border-gray-100 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.2)] z-50 overflow-hidden">
+              <div className="absolute top-full left-0 right-0 mt-4 bg-white/95 backdrop-blur-xl rounded-2xl border border-gray-100 shadow-2xl z-50 overflow-hidden max-h-[60vh] overflow-y-auto">
                 {searchResults.length > 0 ? (
                   <div className="p-2 space-y-1">
                     {searchResults.map((product) => (
                       <Link
                         key={product.id}
                         to={ROUTES.PRODUCT(product.categoryId!, product.subcategoryId, product.id)}
-                        className="flex items-center gap-4 p-4 hover:bg-gray-50 rounded-2xl transition-all group"
+                        className="flex items-center gap-4 p-3 hover:bg-gray-50 rounded-xl transition-all group"
                       >
-                        <div className="w-12 h-12 bg-white rounded-xl flex-shrink-0 flex items-center justify-center border border-gray-100 p-1">
+                        <div className="w-12 h-12 bg-white rounded-lg flex-shrink-0 flex items-center justify-center border border-gray-100 p-1">
                           <img src={product.images?.[0]} alt="" className="w-full h-full object-contain" />
                         </div>
                         <div className="flex-1 text-left">
                           <h4 className="text-sm font-bold text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-1">{product.name}</h4>
-                          <p className="text-[10px] uppercase tracking-widest font-black text-gray-400 mt-0.5">{product.categoryName}</p>
+                          <p className="text-[10px] text-gray-400 mt-0.5">{product.categoryName}</p>
                         </div>
                         <ChevronRight className="w-4 h-4 text-gray-300 group-hover:text-blue-600 group-hover:translate-x-1 transition-all" />
                       </Link>
                     ))}
                   </div>
                 ) : (
-                  <div className="p-8 text-center text-gray-400 font-bold">Nothing found.</div>
+                  <div className="p-6 text-center text-gray-400 font-medium text-sm">Ничего не найдено</div>
                 )}
               </div>
             )}
@@ -152,16 +152,16 @@ const Home: React.FC = () => {
       </section>
 
       {/* Trust Badges */}
-      <section className="px-4 pb-20">
-        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
+      <section className="px-4 pb-16 relative z-10">
+        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
           {[
             { icon: <Zap className="w-5 h-5" />, label: "Быстрая доставка", sub: "По всей России" },
             { icon: <ShieldCheck className="w-5 h-5" />, label: "Контроль качества", sub: "Сертификаты ISO" },
-            { icon: <Truck className="w-5 h-5" />, label: "Бесплатный расчет", sub: "КП за 15 минут" },
-            { icon: <Package className="w-5 h-5" />, label: "Надежная упаковка", sub: "По стандартам" },
+            { icon: <Truck className="w-5 h-5" />, label: "Бесплатный расчёт", sub: "КП за 15 минут" },
+            { icon: <Package className="w-5 h-5" />, label: "Надёжная упаковка", sub: "По стандартам" },
           ].map((item, i) => (
-            <div key={i} className="bg-white/50 backdrop-blur-lg border border-white/60 p-4 md:p-6 rounded-2xl md:rounded-3xl flex flex-col items-center text-center shadow-sm">
-              <div className="w-10 h-10 bg-blue-600 text-white rounded-xl flex items-center justify-center mb-3 shadow-lg shadow-blue-200">
+            <div key={i} className="bg-white/60 backdrop-blur-lg border border-white/60 p-4 md:p-6 rounded-2xl flex flex-col items-center text-center shadow-sm">
+              <div className="w-10 h-10 bg-blue-600 text-white rounded-xl flex items-center justify-center mb-2 shadow-blue-200 shadow-lg">
                 {item.icon}
               </div>
               <h4 className="text-sm font-bold text-gray-900 mb-0.5">{item.label}</h4>
@@ -172,12 +172,12 @@ const Home: React.FC = () => {
       </section>
 
       {/* Catalog Grid */}
-      <section className="px-4 pb-32">
+      <section className="px-4 pb-24">
         <div className="max-w-7xl mx-auto">
-          <div className="flex items-end justify-between mb-10 px-2">
+          <div className="flex items-end justify-between mb-8 px-2">
             <div>
-              <h2 className="text-3xl font-black text-gray-900 tracking-tighter uppercase">Browse Catalog</h2>
-              <div className="h-1 w-12 bg-blue-600 mt-1" />
+              <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 tracking-tight">Каталог товаров</h2>
+              <div className="h-1 w-12 bg-blue-600 mt-2 rounded-full" />
             </div>
           </div>
 
@@ -186,24 +186,24 @@ const Home: React.FC = () => {
               <Link
                 key={category.id}
                 to={ROUTES.CATEGORY(category.id)}
-                className="group relative bg-white rounded-3xl p-8 border border-gray-100 hover:border-blue-500 hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.05)] transition-all duration-500 flex flex-col justify-between min-h-[280px] overflow-hidden"
+                className="group relative bg-white rounded-2xl p-6 border border-gray-100 hover:border-blue-300 hover:shadow-xl transition-all duration-300 flex flex-col justify-between min-h-[220px] overflow-hidden"
               >
-                <div className="absolute -bottom-4 -right-4 w-40 h-40 opacity-10 group-hover:opacity-100 group-hover:scale-110 group-hover:rotate-12 transition-all duration-700">
+                <div className="absolute -bottom-4 -right-4 w-32 h-32 opacity-5 group-hover:opacity-100 group-hover:scale-110 group-hover:rotate-12 group-hover:text-blue-100 transition-all duration-500 text-gray-200">
                   {getIcon(category.id)}
                 </div>
 
                 <div className="relative z-10 flex flex-col h-full">
                   <div className="mb-4">
-                    <p className="text-[10px] font-black text-blue-600 uppercase tracking-widest mb-1">
-                      {categoryCounts[category.id] || 0} Models
+                    <p className="text-[10px] font-bold text-blue-600 mb-1">
+                      {categoryCounts[category.id] || 0} моделей
                     </p>
-                    <h3 className="text-2xl font-black text-gray-900 leading-none uppercase tracking-tighter">
+                    <h3 className="text-xl font-bold text-gray-900 leading-tight">
                       {category.name}
                     </h3>
                   </div>
 
-                  <div className="mt-auto flex items-center gap-2 text-xs font-black text-gray-300 group-hover:text-blue-600 transition-colors uppercase tracking-widest">
-                    <span>Explore Products</span>
+                  <div className="mt-auto flex items-center gap-2 text-xs font-bold text-gray-400 group-hover:text-blue-600 transition-colors">
+                    <span>Перейти в каталог</span>
                     <ChevronRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
                   </div>
                 </div>
