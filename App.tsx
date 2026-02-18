@@ -5,10 +5,13 @@ import { ProductProvider } from './context/ProductContext';
 import FeedbackModal from './components/FeedbackModal';
 import PDFModal from './components/PDFModal';
 import Header from './components/Header';
+import Footer from './components/Footer';
 import { ROUTES } from './lib/routes';
 
 // Code Splitting
 const Home = lazy(() => import('./pages/Home'));
+const CatalogPage = lazy(() => import('./pages/CatalogPage'));
+const ManufacturersPage = lazy(() => import('./pages/ManufacturersPage'));
 const CategoryPage = lazy(() => import('./pages/CategoryPage'));
 const SubcategoryPage = lazy(() => import('./pages/SubcategoryPage'));
 const ProductPage = lazy(() => import('./pages/ProductPage'));
@@ -43,6 +46,8 @@ const AppContent: React.FC = () => {
         }>
           <Routes>
             <Route path={ROUTES.HOME} element={<Home />} />
+            <Route path={ROUTES.CATALOG} element={<CatalogPage />} />
+            <Route path={ROUTES.MANUFACTURERS} element={<ManufacturersPage />} />
             <Route path="/catalog/:categoryId" element={<CategoryPage />} />
             <Route path="/catalog/:categoryId/:subcategoryId" element={<SubcategoryPage />} />
             <Route path="/catalog/:categoryId/:subcategoryId/:productId" element={<ProductPage />} />
@@ -64,9 +69,7 @@ const AppContent: React.FC = () => {
         </button>
       )}
 
-      <footer className="relative z-10 py-12 text-center text-gray-400 text-sm mt-12 glass-panel border-t border-b-0 border-x-0 rounded-none bg-white/30">
-        <p>&copy; {new Date().getFullYear()} Graphic Lab. Premium Equipment.</p>
-      </footer>
+      {isHomePage && <Footer />}
     </div>
   );
 };

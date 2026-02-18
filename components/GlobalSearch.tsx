@@ -73,136 +73,91 @@ export const GlobalSearch: React.FC = () => {
         return () => window.removeEventListener('keydown', handleKeyDown);
     }, []);
 
-    if (!isOpen) {
-        return (
-            <button
-                onClick={() => setIsOpen(true)}
-                className="w-full md:w-auto flex items-center gap-3 px-4 py-2 bg-gray-100/50 hover:bg-gray-100 rounded-full border border-gray-200/50 transition-all group"
-                aria-label="Открыть поиск (Ctrl+K)"
-            >
-                <Search className="w-4 h-4 text-gray-400 group-hover:text-gray-900 transition-colors" />
-                <span className="text-sm font-medium text-gray-500 group-hover:text-gray-900 transition-colors">Поиск оборудования...</span>
-                <kbd className="hidden lg:inline-flex items-center gap-1 px-1.5 py-0.5 text-[10px] font-bold text-gray-400 bg-white border border-gray-200 rounded-md">
-                    CMD K
-                </kbd>
-            </button>
-        );
-    }
-
     return (
-        <>
-            {/* Backdrop */}
-            <div
-                className="fixed inset-0 bg-black/30 backdrop-blur-sm z-[60]"
-                onClick={() => setIsOpen(false)}
-            />
+        <div className="relative w-full">
+            {/* Search Input Area */}
+            <div className="relative flex items-center group">
+                <Search className="absolute left-4 w-4 h-4 text-gray-400 group-focus-within:text-blue-600 transition-colors" />
+                <input
+                    type="text"
+                    value={query}
+                    onChange={(e) => {
+                        setQuery(e.target.value);
+                        if (!isOpen) setIsOpen(true);
+                    }}
+                    onFocus={() => setIsOpen(true)}
+                    placeholder="Поиск оборудования..."
+                    className="w-full pl-11 pr-14 py-2 bg-white rounded-xl border border-gray-200 focus:border-blue-600 transition-colors text-sm font-medium text-gray-900 placeholder-gray-400 outline-none"
+                />
 
-            {/* Search Modal */}
-            <div className="fixed inset-x-4 top-20 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 md:w-full md:max-w-2xl z-[70]">
-                <div className="glass-panel rounded-2xl shadow-2xl overflow-hidden">
-                    {/* Search Input */}
-                    <div className="flex items-center gap-3 px-4 py-3 border-b border-gray-200">
-                        <Search className="w-5 h-5 text-gray-400" />
-                        <input
-                            type="text"
-                            autoFocus
-                            value={query}
-                            onChange={(e) => setQuery(e.target.value)}
-                            placeholder="Поиск оборудования, реактивов, инструментов..."
-                            className="flex-1 bg-transparent border-none outline-none text-gray-900 placeholder-gray-400 text-base"
-                        />
-                        <button
-                            onClick={() => setIsOpen(false)}
-                            className="p-1 hover:bg-gray-100 rounded-lg transition-colors"
-                            aria-label="Закрыть поиск"
-                        >
-                            <X className="w-5 h-5 text-gray-500" />
-                        </button>
-                    </div>
+                {query && (
+                    <button
+                        onClick={() => { setQuery(''); setResults([]); }}
+                        className="absolute right-12 p-1.5 hover:bg-gray-100 rounded-lg text-gray-400"
+                    >
+                        <X className="w-3.5 h-3.5" />
+                    </button>
+                )}
 
-                    {/* Results */}
-                    <div className="max-h-[60vh] overflow-y-auto">
-                        {query.trim().length < 2 ? (
-                            <div className="p-8 text-center text-gray-500">
-                                <p className="text-sm">Введите минимум 2 символа для поиска</p>
-                                <p className="text-xs mt-2 text-gray-400">
-                                    Поиск работает по названию, описанию и характеристикам
-                                </p>
-                            </div>
-                        ) : results.length === 0 ? (
-                            <div className="p-8 text-center text-gray-500">
-                                <Package className="w-12 h-12 mx-auto mb-3 text-gray-300" />
-                                <p className="text-sm font-medium">Ничего не найдено</p>
-                                <p className="text-xs mt-1 text-gray-400">
-                                    Попробуйте изменить запрос
-                                </p>
-                            </div>
-                        ) : (
-                            <div className="divide-y divide-gray-100">
-                                {results.slice(0, 10).map((product) => {
-                                    const subcategory = SUBCATEGORIES.find(s => s.id === product.subcategoryId);
-                                    const category = CATEGORIES.find(c => c.id === subcategory?.categoryId);
+                <div className="absolute right-3 p-1.5 bg-gray-50 text-gray-400 rounded-lg group-focus-within:bg-blue-600 group-focus-within:text-white transition-colors">
+                    <Search className="w-4 h-4" />
+                </div>
+            </div>
 
-                                    return (
-                                        <Link
-                                            key={product.id}
-                                            to={ROUTES.PRODUCT(category?.id || '', subcategory?.id || '', product.id)}
-                                            onClick={() => setIsOpen(false)}
-                                            className="block px-4 py-3 hover:bg-gray-50 transition-colors group"
-                                        >
-                                            <div className="flex items-start gap-3">
-                                                <div className="w-10 h-10 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg flex items-center justify-center flex-shrink-0">
-                                                    <Package className="w-5 h-5 text-indigo-600" />
+            {/* Results Dropdown */}
+            {isOpen && query.trim().length >= 2 && (
+                <>
+                    <div
+                        className="fixed inset-0 z-40"
+                        onClick={() => setIsOpen(false)}
+                    />
+                    <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-xl shadow-lg border border-gray-200 z-50 overflow-hidden">
+                        <div className="max-h-[60vh] overflow-y-auto">
+                            {results.length === 0 ? (
+                                <div className="p-8 text-center text-gray-500">
+                                    <Package className="w-10 h-10 mx-auto mb-3 text-gray-300" />
+                                    <p className="text-sm font-medium">Ничего не найдено</p>
+                                </div>
+                            ) : (
+                                <div className="divide-y divide-gray-50">
+                                    {results.slice(0, 8).map((product) => {
+                                        const subcategory = SUBCATEGORIES.find(s => s.id === product.subcategoryId);
+                                        const category = CATEGORIES.find(c => c.id === subcategory?.categoryId);
+                                        return (
+                                            <Link
+                                                key={product.id}
+                                                to={ROUTES.PRODUCT(category?.id || '', subcategory?.id || '', product.id)}
+                                                onClick={() => setIsOpen(false)}
+                                                className="flex items-center gap-4 p-3 hover:bg-gray-50 transition-colors group"
+                                            >
+                                                <div className="w-12 h-12 bg-gray-50 rounded-xl flex-shrink-0 flex items-center justify-center p-1 border border-gray-100 group-hover:border-blue-100">
+                                                    <img src={product.images?.[0]} alt="" className="w-full h-full object-contain mix-blend-multiply" />
                                                 </div>
-
                                                 <div className="flex-1 min-w-0">
-                                                    <h4 className="text-sm font-semibold text-gray-900 group-hover:text-indigo-600 transition-colors">
+                                                    <h4 className="text-sm font-bold text-gray-900 group-hover:text-blue-600 transition-colors truncate">
                                                         {product.name}
                                                     </h4>
-                                                    <p className="text-xs text-gray-500 mt-0.5 line-clamp-1">
+                                                    <p className="text-[10px] text-gray-400 mt-0.5">
                                                         {product.categoryName} → {product.subcategoryName}
                                                     </p>
-                                                    {product.specs && product.specs.length > 0 && (
-                                                        <p className="text-xs text-gray-400 mt-1 line-clamp-1">
-                                                            {product.specs[0]}
-                                                        </p>
-                                                    )}
                                                 </div>
-
-                                                <div className={`text-xs px-2 py-1 rounded-full ${product.inStock
-                                                    ? 'bg-green-100 text-green-700'
-                                                    : 'bg-gray-100 text-gray-500'
+                                                <div className={`text-[10px] font-bold px-2 py-1 rounded-full whitespace-nowrap ${product.inStock ? 'bg-green-50 text-green-700' : 'bg-gray-50 text-gray-500'
                                                     }`}>
                                                     {product.inStock ? 'В наличии' : 'Под заказ'}
                                                 </div>
-                                            </div>
-                                        </Link>
-                                    );
-                                })}
-
-                                {results.length > 10 && (
-                                    <div className="px-4 py-3 text-center text-xs text-gray-500 bg-gray-50">
-                                        Показано 10 из {results.length} результатов
-                                    </div>
-                                )}
-                            </div>
-                        )}
-                    </div>
-
-                    {/* Footer */}
-                    <div className="px-4 py-2 border-t border-gray-200 bg-gray-50/50">
-                        <div className="flex items-center justify-between text-xs text-gray-500">
-                            <span>💡 Поддержка опечаток и синонимов</span>
-                            <span className="flex items-center gap-2">
-                                <kbd className="px-1.5 py-0.5 bg-white border border-gray-300 rounded">
-                                    Esc
-                                </kbd>
-                                закрыть
-                            </span>
+                                            </Link>
+                                        );
+                                    })}
+                                </div>
+                            )}
+                        </div>
+                        <div className="px-4 py-2 bg-gray-50 border-t border-gray-100 text-[10px] text-gray-400 flex justify-between">
+                            <span>Найдено результатов: {results.length}</span>
+                            <span>Esc чтобы закрыть</span>
                         </div>
                     </div>
-                </div>
-            </div>
-        </>
+                </>
+            )}
+        </div>
     );
 };

@@ -64,6 +64,8 @@ Reference these guidelines when:
 - `line-height` - Use 1.5-1.75 for body text
 - `line-length` - Limit to 65-75 characters per line
 - `font-pairing` - Match heading/body font personalities
+- `no-uppercase` - Avoid UPPERCASE for UI text (except acronyms like ISO/GOST)
+- `no-tracking` - Do NOT use letter-spacing (tracking-wide/wider/widest). Use tracking-normal.
 
 ### 6. Animation (MEDIUM)
 - `duration-timing` - Use 150-300ms for micro-interactions

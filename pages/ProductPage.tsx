@@ -10,7 +10,7 @@ const ProductPage: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
   const { getProductById, loading } = useProducts();
   const product = productId ? getProductById(productId) : undefined;
-  const { openModal } = useModal();
+  const { openModal, openPDFModal } = useModal();
   const [activeImage, setActiveImage] = useState(0);
 
   useEffect(() => {
@@ -90,12 +90,15 @@ const ProductPage: React.FC = () => {
           <div className="mt-auto flex flex-col sm:flex-row gap-4">
             <button
               onClick={() => openModal(product.name)}
-              className="flex-1 bg-gray-900 text-white font-bold text-lg py-4 px-8 rounded-xl hover:bg-gray-800 transition-colors shadow-sm"
+              className="flex-[2] bg-gray-900 text-white font-bold text-lg py-4 px-8 rounded-xl hover:bg-gray-800 transition-colors shadow-sm"
             >
               Запросить предложение
             </button>
-            <button className="flex-1 border border-gray-300 text-gray-900 font-bold text-lg py-4 px-8 rounded-xl hover:bg-gray-50 transition-colors">
-              Контакты
+            <button
+              onClick={() => openPDFModal('/brochure.pdf')}
+              className="flex-1 border border-gray-300 text-gray-900 font-bold text-lg py-4 px-8 rounded-xl hover:bg-gray-50 transition-colors flex items-center justify-center gap-2"
+            >
+              Скачать PDF
             </button>
           </div>
         </div>

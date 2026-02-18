@@ -1,136 +1,36 @@
 [
-  {
-    "id": "td6c-001",
-    "subcategoryId": "refrigerated-centrifuges",
-    "name": "Центрифуга TD6C низкоскоростная лабораторная, настольная",
-    "specs": [
-      "Скорость: до\u00A06000 об/мин",
-      "Ускорение: до\u00A04110×g",
-      "Вместимость: до\u00A06x100 мл.",
-      "Производитель: Yingtai"
-    ],
-    "description": "скорость до\u00A06000 об/мин, ускорение до\u00A04110×g, вместимость до\u00A06x100 мл., Yingtai",
-    "inStock": true,
-    "images": [
-      "/images/products/td6c.jpg"
-    ],
-    "thumbnail": "/images/products/td6c.jpg"
-  },
-  {
-    "id": "ref-001",
-    "subcategoryId": "refrigerated-centrifuges",
-    "name": "Высокоскоростная центрифуга с\u00A0охлаждением",
-    "specs": [
-      "Max Speed: 21000 RPM",
-      "Temp: -20C to +40C"
-    ],
-    "description": "Профессиональная система центрифугирования с\u00A0контролем температуры.",
-    "inStock": true,
-    "images": [],
-    "thumbnail": ""
-  },
-  {
-    "id": "non-ref-001",
-    "subcategoryId": "non-refrigerated-centrifuges",
-    "name": "Настольная центрифуга без\u00A0охлаждения",
-    "specs": [
-      "Max Speed: 5000 RPM",
-      "Capacity: 4x100ml"
-    ],
-    "description": "Компактная центрифуга для\u00A0общелабораторных задач.",
-    "inStock": true,
-    "images": [],
-    "thumbnail": ""
-  },
-  {
-    "id": "cyto-001",
-    "subcategoryId": "cytology-centrifuges",
-    "name": "Цитологическая центрифуга",
-    "specs": [
-      "Max Speed: 3000 RPM",
-      "Rotor: Cyto"
-    ],
-    "description": "Специализированная центрифуга для\u00A0цитологических исследований.",
-    "inStock": true,
-    "images": [],
-    "thumbnail": ""
-  },
-  {
-    "id": "oil-001",
-    "subcategoryId": "oil-test-centrifuges",
-    "name": "Центрифуга для\u00A0анализа нефти",
-    "specs": [
-      "Max Speed: 4000 RPM",
-      "Standard: ASTM D96"
-    ],
-    "description": "Предназначена для\u00A0определения содержания воды и\u00A0осадка в\u00A0нефти.",
-    "inStock": true,
-    "images": [],
-    "thumbnail": ""
-  },
-  {
-    "id": "gel-001",
-    "subcategoryId": "gel-card-centrifuges",
-    "name": "Центрифуга для\u00A0гелевых карт",
-    "specs": [
-      "Capacity: 24 Cards",
-      "Speed: 1000 RPM"
-    ],
-    "description": "Для\u00A0работы с\u00A0гелевыми картами в\u00A0иммуногематологии.",
-    "inStock": true,
-    "images": [],
-    "thumbnail": ""
-  },
-  {
-    "id": "prp-001",
-    "subcategoryId": "prp-centrifuges",
-    "name": "Центрифуга для\u00A0PRP-плазмалифтинга",
-    "specs": [
-      "Max Speed: 4000 RPM",
-      "Timer: 1-99 min"
-    ],
-    "description": "Оптимальна для\u00A0получения плазмы, богатой тромбоцитами.",
-    "inStock": true,
-    "images": [],
-    "thumbnail": ""
-  },
-  {
-    "id": "hem-001",
-    "subcategoryId": "hematocrit-centrifuges",
-    "name": "Гематокритная центрифуга",
-    "specs": [
-      "Max Speed: 12000 RPM",
-      "Rotor: 24 Capillaries"
-    ],
-    "description": "Для\u00A0определения гематокритного числа крови.",
-    "inStock": true,
-    "images": [],
-    "thumbnail": ""
-  },
-  {
-    "id": "cw-001",
-    "subcategoryId": "cell-washer-centrifuges",
-    "name": "Центрифуга для\u00A0промывки клеток",
-    "specs": [
-      "Max Speed: 3500 RPM",
-      "Automated: Yes"
-    ],
-    "description": "Автоматизированная система промывки эритроцитов.",
-    "inStock": true,
-    "images": [],
-    "thumbnail": ""
-  },
-  {
-    "id": "ultra-001",
-    "subcategoryId": "ultracentrifuges",
-    "name": "Ультрацентрифуга",
-    "specs": [
-      "Max Speed: 80000 RPM",
-      "Vacuum: Yes"
-    ],
-    "description": "Экстремально высокие скорости для\u00A0разделения наночастиц.",
-    "inStock": true,
-    "images": [],
-    "thumbnail": ""
-  }
+    {
+        "id": "sample-blood-centrifuge-cl6",
+        "subcategoryId": "blood-bank-centrifuge",
+        "name": "Напольная рефрижераторная центрифуга CL6",
+        "specs": [
+            "Макс. скорость: 6000 об/мин",
+            "Макс. RCF: 6600 xg",
+            "Макс. емкость: 6 x 1000 мл",
+            "Температурный диапазон: -20°C ~ +40°C",
+            "Точность поддержания температуры: ±1°C",
+            "Таймер: 1 мин - 99 ч 59 мин"
+        ],
+        "description": "Профессиональная центрифуга высокой емкости, специально разработанная для нужд станций переливания крови и крупных лабораторий. Обеспечивает точность разделения и стабильное охлаждение.",
+        "images": [
+            "https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&q=80&w=800"
+        ],
+        "inStock": true
+    },
+    {
+        "id": "sample-high-speed-h16",
+        "subcategoryId": "high-speed-centrifuge",
+        "name": "Высокоскоростная центрифуга H16",
+        "specs": [
+            "Макс. скорость: 16000 об/мин",
+            "Макс. RCF: 17800 xg",
+            "Макс. емкость: 12 x 1.5/2.0 мл",
+            "Уровень шума: ≤ 55 дБ"
+        ],
+        "description": "Компактная и мощная настольная центрифуга для молекулярно-биологических исследований. Быстрый разгон и торможение, надежная фиксация ротора.",
+        "images": [
+            "https://images.unsplash.com/photo-1579154236113-de92667d4fc6?auto=format&fit=crop&q=80&w=800"
+        ],
+        "inStock": true
+    }
 ]
