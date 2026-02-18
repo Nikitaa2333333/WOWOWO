@@ -1,0 +1,92 @@
+## UI Pro Max Stack Guidelines
+**Stack:** react | **Query:** react waterfall rerender performance
+**Source:** stacks/react.csv | **Found:** 8 results
+
+### Result 1
+- **Category:** Performance
+- **Guideline:** Use React DevTools Profiler
+- **Description:** Profile to identify performance bottlenecks
+- **Do:** Profile before optimizing
+- **Don't:** Optimize without measuring
+- **Code Good:** React DevTools Profiler
+- **Code Bad:** Guessing at bottlenecks
+- **Severity:** Medium
+- **Docs URL:** https://react.dev/learn/react-developer-tools
+
+### Result 2
+- **Category:** Performance
+- **Guideline:** Batch state updates
+- **Description:** React 18 auto-batches but be aware
+- **Do:** Let React batch related updates
+- **Don't:** Manual batching with flushSync
+- **Code Good:** setA(1); setB(2); // batched
+- **Code Bad:** flushSync(() => setA(1))
+- **Severity:** Low
+- **Docs URL:** https://react.dev/learn/queueing-a-series-of-state-updates
+
+### Result 3
+- **Category:** Performance
+- **Guideline:** Virtualize long lists
+- **Description:** Use windowing for lists over 100 items
+- **Do:** react-window or react-virtual
+- **Don't:** Render thousands of DOM nodes
+- **Code Good:** <VirtualizedList items={items}/>
+- **Code Bad:** {items.map(i => <Item />)}
+- **Severity:** High
+- **Docs URL:** 
+
+### Result 4
+- **Category:** Performance
+- **Guideline:** Lazy load components
+- **Description:** Use React.lazy for code splitting
+- **Do:** lazy() for routes and heavy components
+- **Don't:** Import everything upfront
+- **Code Good:** const Page = lazy(() => import('./Page'))
+- **Code Bad:** import Page from './Page'
+- **Severity:** Medium
+- **Docs URL:** https://react.dev/reference/react/lazy
+
+### Result 5
+- **Category:** TypeScript
+- **Guideline:** Type event handlers
+- **Description:** Use React event types
+- **Do:** React.ChangeEvent<HTMLInputElement>
+- **Don't:** Generic Event type
+- **Code Good:** onChange: React.ChangeEvent<HTMLInputElement>
+- **Code Bad:** onChange: Event
+- **Severity:** Medium
+- **Docs URL:** 
+
+### Result 6
+- **Category:** Events
+- **Guideline:** Use synthetic events correctly
+- **Description:** React normalizes events across browsers
+- **Do:** e.preventDefault() e.stopPropagation()
+- **Don't:** Access native event unnecessarily
+- **Code Good:** onClick={(e) => e.preventDefault()}
+- **Code Bad:** onClick={(e) => e.nativeEvent.preventDefault()}
+- **Severity:** Low
+- **Docs URL:** https://react.dev/reference/react-dom/components/common#react-event-object
+
+### Result 7
+- **Category:** Hooks
+- **Guideline:** Follow rules of hooks
+- **Description:** Only call hooks at top level and in React functions
+- **Do:** Hooks at component top level
+- **Don't:** Hooks in conditions loops or callbacks
+- **Code Good:** const [x, setX] = useState()
+- **Code Bad:** if (cond) { const [x, setX] = useState() }
+- **Severity:** High
+- **Docs URL:** https://react.dev/reference/rules/rules-of-hooks
+
+### Result 8
+- **Category:** Rendering
+- **Guideline:** Use React.memo wisely
+- **Description:** Wrap components that render often with same props
+- **Do:** memo for pure components with stable props
+- **Don't:** memo everything or nothing
+- **Code Good:** memo(ExpensiveList)
+- **Code Bad:** memo(SimpleButton)
+- **Severity:** Low
+- **Docs URL:** https://react.dev/reference/react/memo
+
