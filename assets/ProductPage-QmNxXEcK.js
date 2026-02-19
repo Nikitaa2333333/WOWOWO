@@ -1,4 +1,4 @@
-import{c as u,b as h,u as f,e as y,r as x,j as r}from"./index-p8lL0B2Y.js";import{B as j}from"./Breadcrumbs-B1ofP6RU.js";import"./chevron-right-BhTtM6uj.js";/**
+import{c as u,b as h,u as f,e as y,r as x,j as r}from"./index-BBw3P5-a.js";import{B as j}from"./Breadcrumbs-CuOckF-l.js";import"./chevron-right-MZsYRXrk.js";/**
  * @license lucide-react v0.563.0 - ISC
  *
  * This source code is licensed under the ISC license.
