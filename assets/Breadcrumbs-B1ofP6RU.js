@@ -1,0 +1,6 @@
+import{c as x,a as h,j as s,L as m,C as p,S as f,f as d}from"./index-p8lL0B2Y.js";import{C as u}from"./chevron-right-BhTtM6uj.js";/**
+ * @license lucide-react v0.563.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const g=[["path",{d:"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8",key:"5wwlr5"}],["path",{d:"M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z",key:"r6nss1"}]],j=x("house",g),C=()=>{const a=h().pathname.split("/").filter(t=>t);return a.length===0?null:s.jsxs("nav",{className:"flex items-center space-x-2 text-sm text-gray-500 mb-8 px-1",children:[s.jsx(m,{to:"/",className:"hover:text-gray-900 transition-colors flex items-center",children:s.jsx(j,{className:"w-4 h-4"})}),a.map((t,n)=>{const o=`/${a.slice(0,n+1).join("/")}`,c=n===a.length-1;if(t==="catalog")return null;let e=t;const i=p.find(r=>r.id===t);i&&(e=i.name);const l=f.find(r=>r.id===t);return l&&(e=l.name),n>2&&!c?null:s.jsxs(d.Fragment,{children:[s.jsx(u,{className:"w-3 h-3 text-gray-300 flex-shrink-0"}),c?s.jsx("span",{className:"font-bold text-gray-900 truncate max-w-[120px] sm:max-w-[200px]",children:e}):s.jsx(m,{to:o,className:"hover:text-gray-900 transition-colors truncate max-w-[80px] sm:max-w-[150px]",children:e})]},o)})]})};export{C as B};
